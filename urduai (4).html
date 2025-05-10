@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Card System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-6">Student Card System</h1>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <form id="studentForm" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                </div>
+                <div>
+                    <label for="roll" class="block text-sm font-medium text-gray-700">Roll Number</label>
+                    <input type="text" id="roll" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                </div>
+                <div>
+                    <label for="attendance" class="block text-sm font-medium text-gray-700">Attendance</label>
+                    <select id="attendance" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Result</label>
+                    <div class="flex items-center space-x-4">
+                        <label>
+                            <input type="radio" name="result" value="Pass" class="mr-2"> Pass
+                        </label>
+                        <label>
+                            <input type="radio" name="result" value="Fail" class="mr-2"> Fail
+                        </label>
+                    </div>
+                </div>
+                <button type="button" onclick="createCard()" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg shadow hover:bg-indigo-700">Create Card</button>
+            </form>
+        </div><div id="studentCard" class="mt-10 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Student Card</h2>
+            <p><strong>Name:</strong> <span id="cardName"></span></p>
+            <p><strong>Roll Number:</strong> <span id="cardRoll"></span></p>
+            <p><strong>Attendance:</strong> <span id="cardAttendance"></span></p>
+            <p><strong>Result:</strong> <span id="cardResult"></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function createCard() {
+        const name = document.getElementById('name').value;
+        const roll = document.getElementById('roll').value;
+        const attendance = document.getElementById('attendance').value;
+        const result = document.querySelector('input[name="result"]:checked').value;
+
+        document.getElementById('cardName').textContent = name;
+        document.getElementById('cardRoll').textContent = roll;
+        document.getElementById('cardAttendance').textContent = attendance;
+        document.getElementById('cardResult').textContent = result;
+
+        document.getElementById('studentCard').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
